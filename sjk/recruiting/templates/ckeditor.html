@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div name="content" id="editor">
+    <p>sssssssssss</p>
+</div>
+<script src="./ckeditor.js"></script>
+<script>
+    var data;
+    ClassicEditor.create(document.querySelector('#editor'), {
+            ckfinder: {
+                uploadUrl: '/'
+            }
+        }
+    ).then(editor => {
+        window.editor = editor;
+        data = editor.getData();
+        console.log(data);
+    })
+        .catch(error => {
+            console.log(error);
+        });
+</script>
+</body>
+</html>

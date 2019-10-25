@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            {% for h in hinfo %}
+            当前用户：{{ h.name }}
+            {% endfor %}
+        </a>
+        <span> <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 20px"><a
+                href="logout_hr">退出</a></button></span>
+    </nav>
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">首页</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">投递信息</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                   aria-controls="v-pills-messages" aria-selected="false">消息</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">设置</a>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                     aria-labelledby="v-pills-home-tab">
+                    <div class="container">
+                        <div><h3>发布的岗位需求</h3></div>
+                        <hr>
+                        {% for d in detail_list %}
+                        <div class="card w-100" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ d.post }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ d.pub_date }}</h6>
+                                <p><span class="badge badge-pill badge-primary">不限</span>
+                                    <span class="badge badge-pill badge-primary">{{ d.get_education_display }}</span>
+                                    <span class="badge badge-pill badge-primary">{{ d.get_experience_display}}</span>
+                                    <span class="badge badge-pill badge-primary">{{ d.get_salary_display}}</span></p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                        <span class="step-links">
+        {% if detail.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ detail.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ detail.number }} of {{ detail.paginator.num_pages }}.
+        </span>
+
+        {% if detail.has_next %}
+            <a href="?page={{ detail.next_page_number }}">next</a>
+            <a href="?page={{ detail.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+                    </span>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="row" style="padding-top:50px">
+                        <div class="container">
+                            <div class="containter">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                                           href="#pills-home" role="tab" aria-controls="pills-home"
+                                           aria-selected="true">投递成功</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                           href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                           aria-selected="false">面试邀约</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
+                                           href="#pills-contact" role="tab" aria-controls="pills-contact"
+                                           aria-selected="false">录用</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <div class="container">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                             aria-labelledby="pills-home-tab">
+                                            {% for r in record %}
+                                            <div class="card w-100">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-6">
+                                                            <h5 class="card-title">{{ r.applicant.name }} </h5>
+                                                            <h5>应聘岗位：{{ r.detail.post }}</h5>
+                                                            <h5>文章：{{ r.detail.title }}</h5>
+                                                            <p class="card-text">{{ r.applicant.station }} /
+                                                                {{ r.applicant.province }}/{{ r.applicant.city }}
+                                                                /{{ r.applicant.get_salary_display }}</p>
+                                                            <p class="card-text">{{ r.applicant.school }}/
+                                                                {{ r.applicant.specialty }} </p>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <a href="#" class="btn btn-primary">沟通</a>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <button type="button" class="btn btn-light"
+                                                                    data-toggle="modal" data-target="#exampleModalLong">
+                                                                查看简历
+                                                            </button>
+                                                            <button type="button" class="btn btn-light">下载简历</button>
+                                                            <button type="button" class="btn btn-light">待定</button>
+                                                            <button type="button" class="btn btn-light">不合适</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="exampleModalLong" tabindex="-1"
+                                                 role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="exampleModalLongTitle">简历信息</h5>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h6>姓名：{{ r.applicant.name }}</h6>
+                                                            <h6>性别：{{ r.applicant.get_sex_display }}</h6>
+                                                            <h6>电话：{{ r.applicant.telephone }}</h6>
+                                                            <h6>学校：{{ r.applicant.school }}</h6>
+                                                            <h6>专业：{{ r.applicant.specialty }}</h6>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button"
+                                                                    class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                            <button type="button"
+                                                                    class="btn btn-primary">Save changes
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                             aria-labelledby="pills-profile-tab">...
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                             aria-labelledby="pills-contact-tab">...
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--                                &lt;!&ndash;                                {% for a in applicant %}&ndash;&gt;-->
+                                <!--                                {% for r in record %}-->
+                                <!--                                <div class="card w-100">-->
+                                <!--                                    <div class="card-body">-->
+                                <!--                                        <div class="row align-items-center">-->
+                                <!--                                            <div class="col-6">-->
+                                <!--                                                <h5 class="card-title">{{ r.applicant.name }} </h5>-->
+                                <!--                                                <p class="card-text">{{ r.applicant.station }} /{{ r.applicant.province-->
+                                <!--                                                    }}/{{ r.applicant.city }}/{{ r.applicant.get_salary_display }}</p>-->
+                                <!--                                                <p class="card-text">{{ r.applicant.school }}/{{ r.applicant.specialty-->
+                                <!--                                                    }} </p>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="col-2">-->
+                                <!--                                                <a href="#" class="btn btn-primary">沟通</a>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="col-4">-->
+                                <!--                                                <button type="button" class="btn btn-light">查看简历</button>-->
+                                <!--                                                <button type="button" class="btn btn-light">下载简历</button>-->
+                                <!--                                                <button type="button" class="btn btn-light">待定</button>-->
+                                <!--                                                <button type="button" class="btn btn-light">不合适</button>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                {% endfor %}-->
+                                <!--                                {% endfor %}-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                     aria-labelledby="v-pills-messages-tab">
+                    3
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                     aria-labelledby="v-pills-settings-tab">
+                    4
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

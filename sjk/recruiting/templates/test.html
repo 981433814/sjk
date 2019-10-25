@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .then( editor => {
+    console.log( editor );
+    } )
+    .catch( error => {
+    console.error( error );
+    } );
+</head>
+<body>
+<p>---------------post-----------------</p>
+<form action="/sjk/test" method="POST">
+    {% csrf_token %}
+    <p>
+        <label>类型名称</label>
+        <input type="text" name="name">
+    </p>
+    <p>
+        <label>类型描述</label>
+        <textarea name="description"></textarea>
+    </p>
+    <p>
+        <input type="submit" value="注册">
+    </p>
+</form>
+{% for t in hrs %}
+<p>{{ t.name }}-------{{ t.h_account }}-----{{t.password}}</p>
+{% endfor %}
+<textarea name="content" id="editor">
+    &lt;p&gt;Here goes the initial content of the editor.&lt;/p&gt;
+</textarea>
+<script src="[ckeditor-build-path]/ckeditor.js"></script>
+</body>
+</html>

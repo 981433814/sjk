@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+</head>
+<body>
+{% extends "./base4.html" %}
+{% block main %}
+<!-- 分割线-->
+<!--卡片-->
+<div class="container">
+    <hr>
+    <h3 class="text-center">当前职位共<span class="text-warning">{{ count }}</span>个</P></h3>
+</div>
+<div class="container">
+    <div class="row" style="padding-top: 20px;overflow: hidden">
+        {% for d in detail %}
+        <!--                <div class="col-4">-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body;" style="margin: 10px">
+                    {% autoescape off %}
+
+                    <div class="row" style="overflow: hidden">
+<!--                        <table class="container" >-->
+<!--                            <tr>-->
+<!--                                <th><p>{{ d.title }}</P></th>-->
+<!--                                <th><p>发布人：涛声依旧</p></th>-->
+<!--                                <th><P>公司：涛声依旧科技有限公司</P></th>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+                        <div class="col-auto">
+                            <p>{{ d.title }}</P>
+                        </div>
+                        <div class="col-auto">
+                            <p>发布人：{{ d.hr.name }}</p>
+                        </div>
+                        <div class="auto" style="overflow: hidden">
+                            <P>公司：涛声依旧科技有限公司</P>
+                        </div>
+                    </div>
+                    <span class="badge badge-pill badge-secondary">不限</span>
+                    <span class="badge badge-pill badge-secondary">{{ d.get_education_display}}</span>
+                    <span class="badge badge-pill badge-secondary">{{ d.get_experience_display}}</span>
+                    <span class="badge badge-pill badge-secondary">{{ d.get_salary_display }}</span>
+                    <!--                    <h3><p class="font-weight-bold">{{ d.title }}</p></h3>-->
+                    <!--                    <h6 class="card-subtitle mb-2 text-muted">涛声依旧</h6>-->
+                    <div class="row" style="padding-top: 20px">
+                        <div class="container">
+                            <p>招聘岗位：{{ d.post }}</p>
+                            <p>公司地址：{{ d.company_address }}</p>
+                        </div>
+                    </div>
+                    {% endautoescape %}
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><a href="detail/{{ d.id }}/" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a></small>
+                </div>
+            </div>
+        </div>
+        <!--                </div>-->
+        {% endfor %}
+    </div>
+    <div class="pagination">
+    <span class="step-links">
+        {% if detail.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ detail.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ detail.number }} of {{ detail.paginator.num_pages }}.
+        </span>
+
+        {% if detail.has_next %}
+            <a href="?page={{ detail.next_page_number }}">next</a>
+            <a href="?page={{ detail.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+    <div style="padding-top: 15px">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

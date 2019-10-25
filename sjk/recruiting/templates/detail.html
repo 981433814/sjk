@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+</head>
+<body>
+{% extends "./base5.html" %}
+{% block main %}
+<script>
+        function send()
+        {
+            alert("成功");
+
+            var a = {{ request.session.statue_info }};
+            if (a=1) {
+                alert("成功");
+                }
+            else {
+            alert("失败");
+            }
+        }
+
+
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            {% for d in detail %}
+            <h1>{{ d.post }}</h1>
+            <hr>
+            <span class="badge badge-pill badge-primary">不限</span>
+            <span class="badge badge-pill badge-primary">{{ d.get_education_display }}</span>
+            <span class="badge badge-pill badge-primary">{{ d.get_experience_display}}</span>
+            <span class="badge badge-pill badge-primary">{{ d.get_salary_display}}</span>
+            <h6 style="padding-top: 20px">职位诱惑：五险一金,年终奖,有年假,旅游,技术培训</h6>
+            <button type="button" class="btn btn-light" id="button" onclick="send()"><a href="{% url 'send' %}">投递简历</a>
+            </button>
+            <h1></h1>
+            <h3 style="padding-top: 20px">职位描述</h3>
+            <hr>
+
+            {% autoescape off %}
+            <span> {{ d.context }}</span>
+            {% endautoescape %}
+            {% endfor %}
+        </div>
+        <div class="col-4" style="padding-left: 80px">
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">企业信息</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">涛声依旧有限公司</h5>
+                    <p class="card-text"><span class="badge badge-pill badge-primary">行业</span>IT业</p>
+                    <p class="card-text"><span class="badge badge-pill badge-primary">规模</span>200-300</p>
+                    <p class="card-text"><span class="badge badge-pill badge-primary">地址</span>金凤路6号39栋505</p>
+                    <a href="#" class="btn btn-primary">公司详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+</html>
