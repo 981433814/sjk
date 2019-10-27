@@ -55,17 +55,28 @@ def index1(request):
 def login(request):
     time_now = timezone.now()
     if request.method == 'POST':
+        role = request.POST.get('role')
+        print("角色" + role)
         name = request.POST.get('name')
         password = request.POST.get('password')
-        a = Applicant.objects.all().filter(a_account=name, password=password)
-        if a:
-            request.session['member_id'] = a[0].id
-            print(request.session.get('member_id'))
-            return redirect('index1')
+        if role == "option1":
+            a = Applicant.objects.all().filter(a_account=name, password=password)
+            if a:
+                request.session['member_id'] = a[0].id
+                print(request.session.get('member_id'))
+                return redirect('index1')
+            else:
+                error = "密码错误"
+            return render(request, 'login.html', {'error': error})
         else:
-            error = "密码错误"
-        return render(request, 'login.html', {'error': error})
-
+            a = Hr.objects.all().filter(username=name, password=password)
+            if a:
+                request.session['hr_id'] = a[0].id
+                print(request.session.get('hr_id'))
+                return redirect('useradmin')
+            else:
+                error = "密码错误"
+            return render(request, 'login.html', {'error': error})
     return render(request, 'login.html', locals())
 
 
@@ -74,7 +85,7 @@ def hlogin(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         password = request.POST.get('password')
-        a = Hr.objects.all().filter(name=name, password=password)
+        a = Hr.objects.all().filter(username=name, password=password)
         if a:
             request.session['hr_id'] = a[0].id
             print(request.session.get('hr_id'))

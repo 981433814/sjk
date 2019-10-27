@@ -10,7 +10,9 @@ class Hr(models.Model):
         (STATUS_NORMAL, '未登陆'),
         (STATUS_DELETE, '已登录'),
     )
+
     name = models.CharField(max_length=11)
+    username = models.CharField(max_length=11)
     statue = models.PositiveIntegerField(default=1, choices=STATUS_ITEMS, verbose_name="状态")
     password = models.CharField(max_length=20)
 

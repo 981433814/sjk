@@ -25,9 +25,9 @@ xadmin.site.register(views.CommAdminView, GlobalSettings)
 
 
 class HrAdmin(object):
-    list_display = ['name', 'password']
-    search_fields = ['name', 'password']
-    list_filter = ['name', 'password']
+    list_display = ['name', 'username', 'password']
+    search_fields = ['name', 'username', 'password']
+    list_filter = ['name', 'username', 'password']
     actions = ['make_published']
 
     def make_published(self, request, queryset):

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b14b6b2-383a-4e9d-aa28-79791b206960" name="Default Changelist" comment="" />
+    <list default="true" id="1b14b6b2-383a-4e9d-aa28-79791b206960" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sjk/recruiting/migrations/0014_auto_20191027_2207.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/adminx.py" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/adminx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/templates/hlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/templates/hlogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sjk/recruiting/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sjk/recruiting/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +52,11 @@
       <find>account</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1S0Ct56Izx5NyzANuPG92AR4Vmm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -134,5 +151,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

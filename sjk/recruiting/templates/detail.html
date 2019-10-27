@@ -37,8 +37,9 @@
             <span class="badge badge-pill badge-primary">{{ d.get_experience_display}}</span>
             <span class="badge badge-pill badge-primary">{{ d.get_salary_display}}</span>
             <h6 style="padding-top: 20px">职位诱惑：五险一金,年终奖,有年假,旅游,技术培训</h6>
-            <button type="button" class="btn btn-light" id="button" onclick="send()"><a href="{% url 'send' %}">投递简历</a>
-            </button>
+<!--            <button type="button" class="btn btn-light" id="button" onclick="send()"><a href="{% url 'send' %}">投递简历</a>-->
+<!--            </button>-->
+            <a role="button" class="btn btn-primary" href="{% url 'send' %}" >投递简历</a>
             <h1></h1>
             <h3 style="padding-top: 20px">职位描述</h3>
             <hr>
