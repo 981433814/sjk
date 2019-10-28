@@ -200,6 +200,8 @@ def hradmin(request):
     paginator = Paginator(detail_list, 3)
     page = request.GET.get('page')
     details = paginator.get_page(page)
+    # if request.method == 'GET':
+    #     record.statue(statue=5)
     context = {
         'applicant': applicant,
         'record': record,
@@ -208,3 +210,15 @@ def hradmin(request):
         'detail': details,
     }
     return render(request, 'useradmin.html', context)
+
+
+def apadmin(request):
+    a = request.session.get('member_id')
+    ap1 = Applicant.objects.all().filter(id=a)
+    ap = Applicant.objects.get(id=a)
+    record = Record.objects.all().filter(applicant=ap)
+    context = {
+        'ap': ap1,
+        'record': record,
+    }
+    return render(request, 'apadmin.html', context)

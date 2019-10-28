@@ -10,8 +10,8 @@
 <div class="container-fluid">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            {% for h in hinfo %}
-            当前用户：{{ h.name }}
+            {% for a in ap %}
+            当前用户：{{ a.name }}
             {% endfor %}
         </a>
         <span> <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 20px"><a
@@ -23,7 +23,7 @@
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                    aria-controls="v-pills-home" aria-selected="true">首页</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                   aria-controls="v-pills-profile" aria-selected="false">投递信息</a>
+                   aria-controls="v-pills-profile" aria-selected="false">投递进度</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
                    aria-controls="v-pills-messages" aria-selected="false">消息</a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
@@ -77,17 +77,17 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
                                            href="#pills-home" role="tab" aria-controls="pills-home"
-                                           aria-selected="true">投递成功</a>
+                                           aria-selected="true">投递状态</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
                                            href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                           aria-selected="false">面试邀约</a>
+                                           aria-selected="false">录用</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
                                            href="#pills-contact" role="tab" aria-controls="pills-contact"
-                                           aria-selected="false">录用</a>
+                                           aria-selected="false">不合适</a>
                                     </li>
                                 </ul>
                             </div>
@@ -110,18 +110,9 @@
                                                             <p class="card-text">{{ r.applicant.school }}/
                                                                 {{ r.applicant.specialty }} </p>
                                                         </div>
-                                                        <div class="col-2">
-                                                            <a href="#" class="btn btn-primary">沟通</a>
-                                                        </div>
                                                         <div class="col-4">
-                                                            <button type="button" class="btn btn-light"
-                                                                    data-toggle="modal" data-target="#exampleModalLong">
-                                                                查看简历
-                                                            </button>
-                                                            <button type="button" class="btn btn-light">下载简历</button>
-<!--                                                            <button type="button" class="btn btn-light">待定</button>-->
-                                                            <a role="button" class="btn btn-light" href="{% url 'useradmin' %}">合适</a>
-                                                            <button type="button" class="btn btn-light">不合适</button>
+                                                            <span><h5>状态：{{ r.get_statue_display }}</h5></span>
+                                                            <span></span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -15,5 +15,6 @@ urlpatterns = [
     path('send', views.send, name='send'),
     path('logout', views.logout, name='logout'),
     path('logout_hr', views.logout_hr, name='logout_hr'),
+    path('apadmin', views.apadmin, name='apadmin'),
     # path('<int:detail_id>/detail/', views.detail, name='detail')
 ]
